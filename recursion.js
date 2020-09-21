@@ -190,6 +190,18 @@ function mazeAllPaths() {
   return smallMazeAllPaths(maze);
 }
 
+function anagram(string,index = 0, word = '') {
+  if(!string) {
+    return '';
+  }
+  if(index< 0 || index>= string.length) {
+    console.log(word);
+    return '';
+  }
+return string.charAt(index) + anagram(string, index +1, word = word + string.charAt(index));
+}
+
+
 module.exports = {
   countSheep,
   powerCalculator,
@@ -201,5 +213,6 @@ module.exports = {
   smallMazeBasic,
   mazeBasic,
   smallMazeAllPaths,
-  mazeAllPaths
+  mazeAllPaths,
+  anagram
 };
