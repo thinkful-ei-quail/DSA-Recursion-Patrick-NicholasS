@@ -54,12 +54,20 @@ function stringSplitterHelper(string, split, results) {
   stringSplitterHelper(string.slice(loc + 1, string.length), split, results);
 }
 
+function fibonacci(numb) {
+  if (numb <= 2) {
+    return 1;
+  }
+  return fibonacci(numb-1) + fibonacci(numb-2);
+}
+
 module.exports = {
   countSheep,
   powerCalculator,
   reverseString,
   nthNumber,
   stringSplitter,
+  fibonacci
 };
 
 // const {nthNumber} = require("./recursion")
