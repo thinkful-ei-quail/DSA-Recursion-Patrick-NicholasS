@@ -1,5 +1,5 @@
 function countSheep(numSheep) {
-  if(numSheep <= 0) {
+  if (numSheep <= 0) {
     console.log('All sheep jumped over the fence');
     return;
   }
@@ -8,7 +8,7 @@ function countSheep(numSheep) {
 }
 
 function powerCalculator(base, expo) {
-  if(expo < 0) {
+  if (expo < 0) {
     console.log('exponent should be >= 0');
     return;
   }
@@ -19,27 +19,39 @@ function powerCalculator(base, expo) {
 }
 
 function reverseString(word) {
-  if(word === '') {
+  if (word === '') {
     return '';
   }
   return word[word.length - 1] + reverseString(word.slice(0, word.length - 1));
 }
 
 function nthNumber(num) {
- if (num === 1) {
-   return 1;
- }
- return num + nthNumber(num-1);
+  if (num === 1) {
+    return 1;
+  }
+  return num + nthNumber(num - 1);
 }
 
-function stringSplitter(string,split) {
-  const loc = string.indexOf(split);
-  if (loc === -1)
-  return string;
+function stringSplitter(string, split) {
+  const results = [];
+  stringSplitterHelper(string, split, results);
+  return results;
+}
 
-const result = [string.slice(0,loc)]
-result.push(stringSplitter(string.slice(loc+1,string.length),split));
-return result;
+function stringSplitterHelper(string, split, results) {
+  const loc = string.indexOf(split);
+  if(!string) {
+    return;
+  }
+  if (loc === -1) {
+    results.push(string);
+    return;
+  }
+  const element = string.slice(0, loc);
+  if(element) {
+    results.push(element);
+  }
+  stringSplitterHelper(string.slice(loc + 1, string.length), split, results);
 }
 
 module.exports = {
@@ -47,7 +59,7 @@ module.exports = {
   powerCalculator,
   reverseString,
   nthNumber,
-  stringSplitter
+  stringSplitter,
 };
 
 // const {nthNumber} = require("./recursion")
