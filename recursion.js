@@ -25,8 +25,29 @@ function reverseString(word) {
   return word[word.length - 1] + reverseString(word.slice(0, word.length - 1));
 }
 
+function nthNumber(num) {
+ if (num === 1) {
+   return 1;
+ }
+ return num + nthNumber(num-1);
+}
+
+function stringSplitter(string,split) {
+  const loc = string.indexOf(split);
+  if (loc === -1)
+  return string;
+
+const result = [string.slice(0,loc)]
+result.push(stringSplitter(string.slice(loc+1,string.length),split));
+return result;
+}
+
 module.exports = {
   countSheep,
   powerCalculator,
-  reverseString
+  reverseString,
+  nthNumber,
+  stringSplitter
 };
+
+// const {nthNumber} = require("./recursion")
